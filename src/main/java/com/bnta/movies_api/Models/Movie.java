@@ -1,25 +1,21 @@
 package com.bnta.movies_api.Models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-@Entity
+@Entity (name = "movies")
 public class Movie {
     @Id //primary key is always called id, like in SQL.
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column (name = "title")
     private String title;
-    @Column
+    @Column (name = "rating")
     private String rating;
-    @Column
-    private Long duration;
+    @Column (name = "duration")
+    private int duration;
 
-    public Movie(Long id, String title, String rating, Long duration) {
-        this.id = id;
+    public Movie(String title, String rating, int duration) {
         this.title = title;
         this.rating = rating;
         this.duration = duration;
@@ -52,11 +48,11 @@ public class Movie {
         this.rating = rating;
     }
 
-    public Long getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(Long duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
